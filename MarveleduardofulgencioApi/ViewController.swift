@@ -9,10 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+     var apiCorp : ApiCorp = ApiCorp()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        ApiService.hardProcessingWithString(input: "commands") {
+            (result: String) in
+            print("got back: \(result)")
+            // imprime esto: got back: we finished!
+        }
+        
+        ApiService.hardProcessingWithModelBase() {
+            (result: ModelBase) in
+            print("un objeto: \(result.idSn)")
+            // imprime esto: got back: we finished!
+        }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

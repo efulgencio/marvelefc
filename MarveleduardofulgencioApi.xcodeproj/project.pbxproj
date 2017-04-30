@@ -14,6 +14,12 @@
 		414009031EAFD61300DDC720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 414009011EAFD61300DDC720 /* LaunchScreen.storyboard */; };
 		4140090E1EAFD61300DDC720 /* MarveleduardofulgencioApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140090D1EAFD61300DDC720 /* MarveleduardofulgencioApiTests.swift */; };
 		414009191EAFD61300DDC720 /* MarveleduardofulgencioApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414009181EAFD61300DDC720 /* MarveleduardofulgencioApiUITests.swift */; };
+		414009741EB26B6800DDC720 /* ApiBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414009721EB26B6800DDC720 /* ApiBase.swift */; };
+		414009751EB26B6800DDC720 /* ApiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414009731EB26B6800DDC720 /* ApiUser.swift */; };
+		414009771EB26C0300DDC720 /* ApiCorp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414009761EB26C0300DDC720 /* ApiCorp.swift */; };
+		414009791EB26C6800DDC720 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414009781EB26C6800DDC720 /* ApiService.swift */; };
+		4140097B1EB26D9500DDC720 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140097A1EB26D9500DDC720 /* ModelBase.swift */; };
+		4140097D1EB2755400DDC720 /* URLRequestGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4140097C1EB2755400DDC720 /* URLRequestGet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		414009141EAFD61300DDC720 /* MarveleduardofulgencioApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarveleduardofulgencioApiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		414009181EAFD61300DDC720 /* MarveleduardofulgencioApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarveleduardofulgencioApiUITests.swift; sourceTree = "<group>"; };
 		4140091A1EAFD61300DDC720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		414009721EB26B6800DDC720 /* ApiBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiBase.swift; sourceTree = "<group>"; };
+		414009731EB26B6800DDC720 /* ApiUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUser.swift; sourceTree = "<group>"; };
+		414009761EB26C0300DDC720 /* ApiCorp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiCorp.swift; sourceTree = "<group>"; };
+		414009781EB26C6800DDC720 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		4140097A1EB26D9500DDC720 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
+		4140097C1EB2755400DDC720 /* URLRequestGet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestGet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +109,22 @@
 		414008F71EAFD61300DDC720 /* MarveleduardofulgencioApi */ = {
 			isa = PBXGroup;
 			children = (
+				414009721EB26B6800DDC720 /* ApiBase.swift */,
+				414009731EB26B6800DDC720 /* ApiUser.swift */,
+				414009761EB26C0300DDC720 /* ApiCorp.swift */,
+				414009781EB26C6800DDC720 /* ApiService.swift */,
+				414009691EB1E62B00DDC720 /* coordinator */,
+				4140097E1EB6603900DDC720 /* models */,
+				414009801EB6607200DDC720 /* views */,
+				4140097F1EB6606400DDC720 /* viewmodels */,
 				414008F81EAFD61300DDC720 /* AppDelegate.swift */,
 				414008FA1EAFD61300DDC720 /* ViewController.swift */,
 				414008FC1EAFD61300DDC720 /* Main.storyboard */,
 				414008FF1EAFD61300DDC720 /* Assets.xcassets */,
 				414009011EAFD61300DDC720 /* LaunchScreen.storyboard */,
 				414009041EAFD61300DDC720 /* Info.plist */,
+				4140097A1EB26D9500DDC720 /* ModelBase.swift */,
+				4140097C1EB2755400DDC720 /* URLRequestGet.swift */,
 			);
 			path = MarveleduardofulgencioApi;
 			sourceTree = "<group>";
@@ -123,6 +145,34 @@
 				4140091A1EAFD61300DDC720 /* Info.plist */,
 			);
 			path = MarveleduardofulgencioApiUITests;
+			sourceTree = "<group>";
+		};
+		414009691EB1E62B00DDC720 /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coordinator;
+			sourceTree = "<group>";
+		};
+		4140097E1EB6603900DDC720 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		4140097F1EB6606400DDC720 /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewmodels;
+			sourceTree = "<group>";
+		};
+		414009801EB6607200DDC720 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +313,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				414008FB1EAFD61300DDC720 /* ViewController.swift in Sources */,
+				414009771EB26C0300DDC720 /* ApiCorp.swift in Sources */,
+				414009791EB26C6800DDC720 /* ApiService.swift in Sources */,
+				414009751EB26B6800DDC720 /* ApiUser.swift in Sources */,
+				4140097B1EB26D9500DDC720 /* ModelBase.swift in Sources */,
 				414008F91EAFD61300DDC720 /* AppDelegate.swift in Sources */,
+				414009741EB26B6800DDC720 /* ApiBase.swift in Sources */,
+				4140097D1EB2755400DDC720 /* URLRequestGet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +568,7 @@
 				4140091F1EAFD61300DDC720 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		414009201EAFD61300DDC720 /* Build configuration list for PBXNativeTarget "MarveleduardofulgencioApiTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +577,7 @@
 				414009221EAFD61300DDC720 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		414009231EAFD61300DDC720 /* Build configuration list for PBXNativeTarget "MarveleduardofulgencioApiUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +586,7 @@
 				414009251EAFD61300DDC720 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
