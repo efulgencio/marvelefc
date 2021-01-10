@@ -1,5 +1,4 @@
 # marvelefc
-Use api marvel for show character (Version Mock and Call Api also)
 
 Baso la prueba en tres pilares:
 
@@ -10,5 +9,3 @@ Baso la prueba en tres pilares:
 - Dar vida a los personajes. En el caso del componente ImagenHablar le he añadido
 la utilización de AVFoundation para reproducir por audio un texto.
 
-Me estoy iniciando en ChatBot y sería aplicable para mantener una conversación
-con el personaje.
