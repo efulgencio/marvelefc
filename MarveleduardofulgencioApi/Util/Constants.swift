@@ -23,6 +23,7 @@ enum ApiCharacter: String {
 enum PathJson: String {
    case dataResult = "data.result"
    case thumbnailPath = "thumbnail.path"
+   case thumbnailExtension = "thumbnail.extension"
    case characterId = "id"
    case characterName = "name"
 }

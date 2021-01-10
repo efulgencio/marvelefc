@@ -32,42 +32,40 @@ class DetalleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        backgroundImage.image = UIImage(named: (viewModel?.detail?.imagen)!)
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView?.frame = view.bounds
-        backgroundImage.addSubview(blurEffectView!)
-
+        applyBlur()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         if let viewModel = viewModel {
-            self.lblitem.text = viewModel.detail?.nombre
-            self.imagenView.image = UIImage(named: (viewModel.detail?.imagen)!)
+            lblitem.text = viewModel.detail?.nombre
+            imagenView.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
         } else {
-            self.lblitem.text = ""
-            self.imagenView.image = nil
+            lblitem.text = ""
+            imagenView.image = nil
         }
 
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     fileprivate func actualizarView()
     {
         if let viewModel = viewModel {
-            //self.lblitem?.text = viewModel.detail?.name
+            //lblitem?.text = viewModel.detail?.name
             print(viewModel.detail?.nombre ?? "nada")
         } else {
-            self.lblitem.text = ""
+            lblitem.text = ""
         }
     }
-    
 
-
+    private func applyBlur() {
+        backgroundImage.image = UIImage(named: "imgpersonaje1" ) // pending default image
+        if let viewModel = viewModel {
+            backgroundImage.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
+        }
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.frame = view.bounds
+        backgroundImage.addSubview(blurEffectView!)
+    }
 
 }
 

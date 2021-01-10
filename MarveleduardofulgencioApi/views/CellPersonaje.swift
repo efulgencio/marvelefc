@@ -13,6 +13,7 @@ class CellPersonaje: UITableViewCell {
     @IBOutlet var lblNombre: UILabel!
     @IBOutlet var imagenHablar: ImagenHablar!
 
+
   
     
     var item: ProtocolItem? {

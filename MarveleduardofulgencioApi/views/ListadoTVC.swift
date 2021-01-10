@@ -66,6 +66,7 @@ extension ListadoTVC
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellpersonaje") as! CellPersonaje
         cell.item = viewModel?.itemAtIndex((indexPath as NSIndexPath).row)
+        cell.imagenHablar.imagenView.load(url: URL(string:  (cell.item as! StructItem).finalyImage)!)
 
         return cell
       

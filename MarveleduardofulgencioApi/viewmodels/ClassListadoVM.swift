@@ -24,20 +24,19 @@ class ClassListadoVM: ListadoVM
     var model: ListadoModel? {
         didSet {
             items = nil;
-// /* uncomment for use local mock
+/* uncomment for use local mock
             model?.getMock({ (items) in
                 self.items = items
             })
-// */
+*/
     
-/* uncomment for use marvel url server
+//* uncomment for use marvel url server
             model?.getListCharacter({ (items) in
                 self.items = items
             })
-*/
+//*/
         }
     }
-    
     
     var title: String {
         return "List"

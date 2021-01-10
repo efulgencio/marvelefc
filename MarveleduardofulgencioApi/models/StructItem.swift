@@ -10,11 +10,17 @@ import Foundation
 
 struct StructItem: ProtocolItem
 {
-    var id: Int
-    var nombre: String
-    var imagen: String
-    var descripcion: String
-    var mensaje: String
+    var id = 0
+    var nombre = ""
+    var imagen = ""
+    var formatImg = ""
+    var descripcion = ""
+    var mensaje = ""
+    var finalyImage: String {
+        get {
+           return imagen + "." + formatImg
+        }
+    }
     
     init(cadenainicio: String)
     {
@@ -37,8 +43,10 @@ struct StructItem: ProtocolItem
         self.id = character[PathJson.characterId.rawValue]! as! Int
         self.nombre = character[PathJson.characterName.rawValue]! as! String
         self.imagen = character.value(forKeyPath: PathJson.thumbnailPath.rawValue)! as! String
+        self.formatImg = character.value(forKeyPath: PathJson.thumbnailExtension.rawValue)! as! String
         self.descripcion = "."
         self.mensaje = "."
+
     }
     
 }
