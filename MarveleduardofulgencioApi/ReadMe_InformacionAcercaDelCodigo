@@ -1,0 +1,42 @@
+
+HOLA
+
+
+ApiService :
+
+el método obtenerModeloProtocolItem  retorna objetos simulando llamada a la Api y como retorno llamar al completion
+para retornar al modelo los datos recibidos.
+
+
+********************
+
+Baso la prueba en tres pilares:
+
+- Utilización Arquitecura MVVMC en el proyecto.
+
+- Creación de Componentes para su reutilización. Ejemplo : CellPersonaje, ImagenHablar
+
+- Dar vida a los personajes. En el caso del componente ImagenHablar le he añadido
+la utilización de AVFoundation para reproducir por audio un texto.
+
+Me estoy iniciando en ChatBot y sería aplicable para mantener una conversación
+con el personaje.
+
+
+********************
+
+Temas en los que poseo conocimientos y no están aplicados en la prueba:
+
+- Llamadas Api y mapeo JSON a Objetos.
+(En la Apps que he desarrollado profesionalmente : Montseny, ImaginBank, App Banco Sabadell lo he desarrollado e implementado )
+
+- Añadir un PodInstall para gestionar versionado de librerias. Podría utilizar SwiftHTTp, u otras librerias
+
+- Extensiones y utilización de Siri para utilizar la App sin abrirla.
+
+
+Saludos y gracias
+
+
+
+
