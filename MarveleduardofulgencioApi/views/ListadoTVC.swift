@@ -39,6 +39,7 @@ class ListadoTVC: UITableViewController {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.register(UINib(nibName: "CellPersonaje", bundle: nil), forCellReuseIdentifier: "cellpersonaje")
+        tableView.tableFooterView = UIView()
         
         isLoaded = true
         refreshDisplay();
@@ -78,17 +79,11 @@ extension ListadoTVC
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-// For test mock use
-//        if postShown[indexPath.row] {
-//            return
-//        }
-//        postShown[indexPath.row] = true
-        
+    
         let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
         cell.layer.transform = rotationTransform
 
-        UIView.animate(withDuration: 1.5, animations: { cell.layer.transform = CATransform3DIdentity })
+        UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = CATransform3DIdentity })
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
