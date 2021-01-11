@@ -15,6 +15,15 @@ class DetalleVC: UIViewController {
     @IBOutlet var backgroundImage: UIImageView!
     
     var blurEffectView: UIVisualEffectView?
+
+    lazy var basicAnimation: CABasicAnimation = {
+        let animation =  CABasicAnimation(keyPath: "position.y")
+        animation.fromValue = 0
+        animation.toValue = imagenView.bounds.maxY
+        animation.duration = 1.0
+        animation.delegate = self
+        return animation
+    }()
     
     @IBAction func volve(_ sender: Any) {
            viewModel?.done();
@@ -26,24 +35,32 @@ class DetalleVC: UIViewController {
         }
         didSet {
             viewModel?.viewDelegate = self
-          //  actualizarView()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyBlur()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        backgroundImage.image = UIImage(named: "imgpersonaje1" ) // pending default image
         if let viewModel = viewModel {
             lblitem.text = viewModel.detail?.nombre
             imagenView.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
+            backgroundImage.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
         } else {
             lblitem.text = ""
             imagenView.image = nil
         }
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        animationImgCharacter()
+    }
+    
+    private func animationImgCharacter() {
+        imagenView.layer.add(basicAnimation, forKey: nil)
     }
 
     fileprivate func actualizarView()
@@ -57,10 +74,6 @@ class DetalleVC: UIViewController {
     }
 
     private func applyBlur() {
-        backgroundImage.image = UIImage(named: "imgpersonaje1" ) // pending default image
-        if let viewModel = viewModel {
-            backgroundImage.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
-        }
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = view.bounds
@@ -69,12 +82,17 @@ class DetalleVC: UIViewController {
 
 }
 
+extension DetalleVC: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        applyBlur()
+     }
+}
 
 
 extension DetalleVC: DetalleVMViewDelegate
 {
     func valorDidChange(viewModel: DetalleVM)
     {
-     //   actualizarView()
+      actualizarView()
     }
 }
