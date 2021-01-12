@@ -16,3 +16,5 @@ la utilización de AVFoundation para reproducir por audio un texto.
 - Catch Error
 
 - LocalNotification
+
+(El día 12/01/2021 por la tarde a las 20h no funcionaba developer.marvel.com)
