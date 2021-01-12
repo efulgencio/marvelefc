@@ -63,19 +63,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5U-pg-hh4">
-                                <rect key="frame" x="68" y="63" width="239" height="21"/>
+                                <rect key="frame" x="68" y="100" width="239" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DTz-YF-gmB">
-                                <rect key="frame" x="67" y="104" width="241" height="128"/>
+                                <rect key="frame" x="67" y="141" width="241" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="18s-eB-1m6"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TM7-pf-iQK">
-                                <rect key="frame" x="68" y="259" width="239" height="30"/>
+                                <rect key="frame" x="68" y="296" width="239" height="30"/>
                                 <state key="normal" title="Volver al listado">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -94,7 +94,7 @@
                             <constraint firstItem="DTz-YF-gmB" firstAttribute="centerX" secondItem="VYl-lB-1dM" secondAttribute="centerX" id="Ia4-Ih-6tO"/>
                             <constraint firstItem="DTz-YF-gmB" firstAttribute="leading" secondItem="VYl-lB-1dM" secondAttribute="leadingMargin" constant="51" id="Pfz-Nr-UeL"/>
                             <constraint firstItem="TM7-pf-iQK" firstAttribute="leading" secondItem="VYl-lB-1dM" secondAttribute="leadingMargin" constant="52" id="Pug-cI-3Ab"/>
-                            <constraint firstItem="N5U-pg-hh4" firstAttribute="top" secondItem="sVa-G3-sKH" secondAttribute="bottom" constant="63" id="Rb9-oD-cCm"/>
+                            <constraint firstItem="N5U-pg-hh4" firstAttribute="top" secondItem="sVa-G3-sKH" secondAttribute="bottom" constant="100" id="Rb9-oD-cCm"/>
                             <constraint firstItem="TM7-pf-iQK" firstAttribute="centerX" secondItem="VYl-lB-1dM" secondAttribute="centerX" id="YhJ-Iu-hGW"/>
                             <constraint firstItem="iML-1J-ySH" firstAttribute="leading" secondItem="VYl-lB-1dM" secondAttribute="leading" id="lfK-jS-H5B"/>
                             <constraint firstItem="TM7-pf-iQK" firstAttribute="top" secondItem="DTz-YF-gmB" secondAttribute="bottom" constant="27" id="p2X-hD-ejn"/>

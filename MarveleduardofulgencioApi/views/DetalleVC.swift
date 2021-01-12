@@ -40,6 +40,7 @@ class DetalleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveCoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +84,8 @@ class DetalleVC: UIViewController {
         let caracter = Character(context: context)
         caracter.name = viewModel?.detail?.nombre
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        UNService.shared.queueRequest(title: "Favorito", subTitle: "Este personaje se ha guardado en favoritos.")
         
     }
     
