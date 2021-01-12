@@ -49,6 +49,8 @@ class DetalleVC: UIViewController {
             lblitem.text = viewModel.detail?.nombre
             imagenView.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
             backgroundImage.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
+            // Save Core Data
+            
         } else {
             lblitem.text = ""
             imagenView.image = nil
@@ -72,7 +74,19 @@ class DetalleVC: UIViewController {
             lblitem.text = ""
         }
     }
+    
+    // MARK: - CORE DATA
 
+    private func saveCoreData() {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let caracter = Character(context: context)
+        caracter.name = viewModel?.detail?.nombre
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+    }
+    
+    
     private func applyBlur() {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
