@@ -37,6 +37,9 @@ class ListadoTVC: UITableViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        UNService.shared.authorize()
+        
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.register(UINib(nibName: "CellPersonaje", bundle: nil), forCellReuseIdentifier: "cellpersonaje")
         tableView.tableFooterView = UIView()
