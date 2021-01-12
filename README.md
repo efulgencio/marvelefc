@@ -9,3 +9,4 @@ Baso la prueba en tres pilares:
 - Dar vida a los personajes. En el caso del componente ImagenHablar le he añadido
 la utilización de AVFoundation para reproducir por audio un texto.
 
+(He realizado algún comit más para añadir otros aspectos, animación, coredata, a ver si esta noche puedo añadir ARKIT)
