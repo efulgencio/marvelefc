@@ -27,3 +27,9 @@ enum PathJson: String {
    case characterId = "id"
    case characterName = "name"
 }
+
+// Image not exist
+
+enum ErrorImageNotExist : String {
+    case message = "image_not_available"
+}

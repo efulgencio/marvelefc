@@ -25,6 +25,8 @@ class DetalleVC: UIViewController {
         return animation
     }()
     
+    // Fetch request for all Character
+    
     var characterList: [Character] {
        do  {
          return try  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.fetch(Character.fetchRequest())
@@ -50,6 +52,7 @@ class DetalleVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         saveCoreData()
+        checkErrorImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +72,19 @@ class DetalleVC: UIViewController {
         animationImgCharacter()
     }
     
-
+    // Si no hay una imagen relacionada
+    
+    fileprivate func checkErrorImage() {
+        let validation = Validation()
+        
+        do {
+            try validation.validate(text: (viewModel?.detail!.imagen)!)
+        } catch ValidationError.NotExist {
+            UNService.shared.queueRequest(title: "Imagen", subTitle: "No hay imagen del personaje.")
+            return
+        } catch {}
+    }
+    
     fileprivate func actualizarView()
     {
         if let viewModel = viewModel {
@@ -87,6 +102,7 @@ class DetalleVC: UIViewController {
                 isNotInCoreData = true
             }
         }
+        
         return isNotInCoreData
     }
     
