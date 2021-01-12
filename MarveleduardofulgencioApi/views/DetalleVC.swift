@@ -25,6 +25,15 @@ class DetalleVC: UIViewController {
         return animation
     }()
     
+    var characterList: [Character] {
+       do  {
+         return try  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.fetch(Character.fetchRequest())
+       } catch {
+         print("error pendiente de gestionar")
+       }
+       return [Character]()
+    }
+    
     @IBAction func volve(_ sender: Any) {
            viewModel?.done();
     }
@@ -50,8 +59,6 @@ class DetalleVC: UIViewController {
             lblitem.text = viewModel.detail?.nombre
             imagenView.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
             backgroundImage.load(url: URL(string: (viewModel.detail?.imagen)! + ".jpg")!)
-            // Save Core Data
-            
         } else {
             lblitem.text = ""
             imagenView.image = nil
@@ -62,9 +69,6 @@ class DetalleVC: UIViewController {
         animationImgCharacter()
     }
     
-    private func animationImgCharacter() {
-        imagenView.layer.add(basicAnimation, forKey: nil)
-    }
 
     fileprivate func actualizarView()
     {
@@ -76,17 +80,14 @@ class DetalleVC: UIViewController {
         }
     }
     
-    // MARK: - CORE DATA
-
-    private func saveCoreData() {
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let caracter = Character(context: context)
-        caracter.name = viewModel?.detail?.nombre
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-        UNService.shared.queueRequest(title: "Favorito", subTitle: "Este personaje se ha guardado en favoritos.")
-        
+    private func notInCoreData() -> Bool{
+        var isNotInCoreData = false
+        for character in characterList {
+            if character.name == viewModel?.detail?.nombre {
+                isNotInCoreData = true
+            }
+        }
+        return isNotInCoreData
     }
     
     
@@ -96,7 +97,30 @@ class DetalleVC: UIViewController {
         blurEffectView?.frame = view.bounds
         backgroundImage.addSubview(blurEffectView!)
     }
+    
+    private func animationImgCharacter() {
+        imagenView.layer.add(basicAnimation, forKey: nil)
+    }
 
+    
+    // MARK: - PRIVATE METHOD
+
+    private func saveCoreData() {
+        
+        if !notInCoreData() {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let caracter = Character(context: context)
+            caracter.name = viewModel?.detail?.nombre
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            UNService.shared.queueRequest(title: "Favorito", subTitle: "Este personaje se ha guardado en favoritos.")
+        } else {
+            UNService.shared.queueRequest(title: "Favorito", subTitle: "Este personaje ya está en favoritos.")
+        }
+        
+    }
+
+    
 }
 
 extension DetalleVC: CAAnimationDelegate {
