@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ListadoTVC: UITableViewController {
+ class ListadoTVC: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
     
 
-    var postShown = [Bool](repeating: false, count: 6)
-    
+    var filteredResults: [StructItem] = [StructItem]()
+    var shouldShowSearchResults: Bool = false
+    let tableRefreshControl = UIRefreshControl()
+    var resultsController = UITableViewController()
+    var searchController : UISearchController!
+
     var viewModel: ListadoVM? {
         willSet {
             viewModel?.viewDelegate = nil
@@ -39,17 +43,67 @@ class ListadoTVC: UITableViewController {
         super.viewDidLoad()
         
         UNService.shared.authorize()
-        
+    
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         tableView.register(UINib(nibName: "CellPersonaje", bundle: nil), forCellReuseIdentifier: "cellpersonaje")
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl!)
+        }
+        
+        creatingSearhBarInHeaderView()
         
         isLoaded = true
         refreshDisplay();
     }
     
+    func creatingSearhBarInHeaderView() {
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchResultsUpdater = self
+     }
+    
 }
+ 
+ extension ListadoTVC {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        // Pendiente de refactorizar
+//        searchController.searchResultsController?.view.isHidden = false
+//        guard var searchQuery = searchController.searchBar.text else { return }
+//        tableRefreshControl.beginRefreshing()
+//
+//        if searchQuery == "" {
+//          shouldShowSearchResults = false
+//          tableRefreshControl.endRefreshing()
+//          tableView.reloadData()
+//          return
+//        }
+//
+//        searchQuery = searchQuery.lowercased()
+//        filteredResults.removeAll()
+//
+//        for i in 0..<viewModel!.numberOfItems {
+//            if (viewModel?.itemAtIndex(i))!.nombre.lowercased().contains(searchQuery) {
+//                filteredResults.append(viewModel?.itemAtIndex(i) as! StructItem)
+//            }
+//        }
+//
+//        tableView.reloadData()
 
+    }
+        
+  
+ }
+ 
 extension ListadoTVC
 {
     override func numberOfSections(in tableView: UITableView) -> Int
@@ -83,9 +137,8 @@ extension ListadoTVC
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -100, 0, -100)
         cell.layer.transform = rotationTransform
-
         UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = CATransform3DIdentity })
     }
     
