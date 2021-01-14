@@ -9,14 +9,12 @@ Baso la prueba en tres pilares:
 - Dar vida a los personajes. En el caso del componente ImagenHablar le he añadido
 la utilización de AVFoundation para reproducir por audio un texto.
 
-- 12/1/2021 CoreData
+Evolutivo de la prueba cronológico:
 
-- 12/1/2021  Animación
-
-- 12/1/2021  Catch Error
-
-- 12/1/2021 LocalNotification
-
-- 13/1/2021 Búsqueda añadida (pendiente de refactorizar búsqueda)
-
-- 14/1/2021 Implementada búsqueda
+- 12/01/2021 CoreData
+- 12/01/2021  Animación
+- 12/01/2021  Catch Error
+- 12/01/2021 LocalNotification
+- 13/01/2021 Búsqueda añadida (pendiente de refactorizar búsqueda)
+- 14/01/2021 Implementada búsqueda
+- 14/01/2021 Inicio implementación de ArKit (Realidad Aumentada)
