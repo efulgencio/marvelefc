@@ -8,14 +8,17 @@
 
 import UIKit
 
- class ListadoTVC: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+ class ListadoTVC: UITableViewController {
     
-
+    // Elementos filtrados a utilizar en la tabla
     var filteredResults: [StructItem] = [StructItem]()
-    var shouldShowSearchResults: Bool = false
+    // Elementos iniciales retorno del json en la llamada
+    // Se puede añadir un atributo a la clase para que no utilizar dos arrays
+    var initialResults: [StructItem] = [StructItem]()
+
     let tableRefreshControl = UIRefreshControl()
     var resultsController = UITableViewController()
-    var searchController : UISearchController!
+    let searchController = UISearchController(searchResultsController: nil)
 
     var viewModel: ListadoVM? {
         willSet {
@@ -54,54 +57,67 @@ import UIKit
         } else {
             tableView.addSubview(refreshControl!)
         }
-        
+       
         creatingSearhBarInHeaderView()
-        
+
         isLoaded = true
         refreshDisplay();
     }
     
-    func creatingSearhBarInHeaderView() {
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        self.searchController.searchResultsUpdater = self
+    private func creatingSearhBarInHeaderView() {
+        tableView.tableHeaderView = self.searchController.searchBar
+        searchController.searchBar.delegate = self
      }
     
+    private func fillInitialResult() {
+        initialResults.removeAll()
+        for i in 0..<viewModel!.numberOfItems {
+            initialResults.append(viewModel?.itemAtIndex(i) as! StructItem)
+        }
+        filteredResults = initialResults
+    }
 }
  
- extension ListadoTVC {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        // Pendiente de refactorizar
-//        searchController.searchResultsController?.view.isHidden = false
-//        guard var searchQuery = searchController.searchBar.text else { return }
-//        tableRefreshControl.beginRefreshing()
-//
-//        if searchQuery == "" {
-//          shouldShowSearchResults = false
-//          tableRefreshControl.endRefreshing()
-//          tableView.reloadData()
-//          return
-//        }
-//
-//        searchQuery = searchQuery.lowercased()
-//        filteredResults.removeAll()
-//
-//        for i in 0..<viewModel!.numberOfItems {
-//            if (viewModel?.itemAtIndex(i))!.nombre.lowercased().contains(searchQuery) {
-//                filteredResults.append(viewModel?.itemAtIndex(i) as! StructItem)
-//            }
-//        }
-//
-//        tableView.reloadData()
+ extension ListadoTVC: UISearchBarDelegate {
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchController.searchBar.endEditing(true)
+        filterValues(searchBar: searchBar)
     }
-        
-  
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredResults = initialResults
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func filterValues(searchBar: UISearchBar) {
+        guard var searchQuery = searchController.searchBar.text else { return }
+        tableRefreshControl.beginRefreshing()
+
+        if searchQuery == "" {
+          tableRefreshControl.endRefreshing()
+          filteredResults = initialResults
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+          return
+        }
+
+        searchQuery = searchQuery.lowercased()
+        filteredResults.removeAll()
+
+        for i in 0..<initialResults.count {
+            if initialResults[i].nombre.lowercased().contains(searchQuery) {
+                filteredResults.append(initialResults[i])
+            }
+        }
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
  }
  
 extension ListadoTVC
@@ -114,7 +130,10 @@ extension ListadoTVC
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let viewModel = viewModel {
-            return viewModel.numberOfItems
+            if viewModel.numberOfItems > 0 && initialResults.count == 0 {
+                fillInitialResult()
+            }
+            return filteredResults.count
         }
         
         return 0
@@ -123,16 +142,15 @@ extension ListadoTVC
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellpersonaje") as! CellPersonaje
-        cell.item = viewModel?.itemAtIndex((indexPath as NSIndexPath).row)
-        cell.imagenHablar.imagenView.load(url: URL(string:  (cell.item as! StructItem).finalyImage)!)
+         cell.item = filteredResults[(indexPath as NSIndexPath).row]
+         cell.imagenHablar.imagenView.load(url: URL(string:  (cell.item as! StructItem).finalyImage)!)
 
         return cell
-      
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        viewModel?.useItemAtIndex((indexPath as NSIndexPath).row)
+      viewModel?.useItemAtIndex((indexPath as NSIndexPath).row)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
