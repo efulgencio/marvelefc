@@ -18,3 +18,5 @@ la utilización de AVFoundation para reproducir por audio un texto.
 - 12/1/2021 LocalNotification
 
 - 13/1/2021 Búsqueda añadida (pendiente de refactorizar búsqueda)
+
+- 14/1/2021 Implementada búsqueda
