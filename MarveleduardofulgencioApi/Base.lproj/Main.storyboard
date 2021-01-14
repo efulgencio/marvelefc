@@ -90,6 +90,9 @@
                                     <constraint firstAttribute="width" constant="120" id="qT0-yd-ge9"/>
                                 </constraints>
                                 <state key="normal" title="ARKIT"/>
+                                <connections>
+                                    <segue destination="BeC-j1-QSc" kind="presentation" id="Cf3-JK-TRx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,11 +134,11 @@
                         <viewControllerLayoutGuide type="bottom" id="aZw-5n-k2j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="osr-lT-icb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyz-RV-N7e">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -152,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixR-XF-4yl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="-192"/>
+            <point key="canvasLocation" x="1650" y="-227"/>
         </scene>
     </scenes>
     <resources>

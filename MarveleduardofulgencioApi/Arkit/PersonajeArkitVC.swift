@@ -32,7 +32,7 @@ class PersonajeArkitVC: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.frame.size = CGSize(width: 20, height: 20)
-        imageView.image = #imageLiteral(resourceName: "focus")
+        imageView.image = #imageLiteral(resourceName: "imgpersonaje1")
         imageView.center = view.center
         
         view.addSubview(imageView)
