@@ -9,10 +9,12 @@ Baso la prueba en tres pilares:
 - Dar vida a los personajes. En el caso del componente ImagenHablar le he añadido
 la utilización de AVFoundation para reproducir por audio un texto.
 
-- CoreData
+- 12/1/2021 CoreData
 
-- Animación
+- 12/1/2021  Animación
 
-- Catch Error
+- 12/1/2021  Catch Error
 
-- LocalNotification
+- 12/1/2021 LocalNotification
+
+- 13/1/2021 Búsqueda añadida (pendiente de refactorizar búsqueda)
