@@ -13,6 +13,9 @@ import SceneKit
 class PersonajeArkitVC: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var pickerBtn: UIButton!
+   // var heroesPickerViewController: HeroesPickerViewController?
+    var popupVC: PopupVC?
     
     var cameraNode: SCNNode!
     var selectedHeroName: HeroName?
@@ -121,6 +124,24 @@ extension PersonajeArkitVC {
         sceneView.delegate = self
     }
 
+    func onHeroSelected(selectedHeroName: HeroName) {
+        self.selectedHeroName = selectedHeroName
+        popupVC?.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension PersonajeArkitVC: UIPopoverPresentationControllerDelegate {
+    
+    @IBAction func onPickAHeroBtnPressed(_ sender: Any) {
+        popupVC = PopupVC(size: CGSize(width: view.bounds.width, height: 300))
+        popupVC!.modalPresentationStyle = .popover
+        popupVC!.popoverPresentationController?.delegate = self
+        popupVC!.personajeArkitVC = self
+        present(popupVC!, animated: true, completion: nil)
+        popupVC!.popoverPresentationController?.sourceView = sender as? UIView
+    }
+    
 }
 
 //MARK: ARSCNViewDelegate

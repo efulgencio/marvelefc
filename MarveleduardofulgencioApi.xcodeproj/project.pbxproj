@@ -33,6 +33,7 @@
 		416D02DE25B0DE8A000DE331 /* PersonajeArkitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416D02DD25B0DE8A000DE331 /* PersonajeArkitVC.swift */; };
 		416D02EE25B0E58B000DE331 /* HeroName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416D02EC25B0E58A000DE331 /* HeroName.swift */; };
 		416D02EF25B0E58B000DE331 /* HeroNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416D02ED25B0E58B000DE331 /* HeroNode.swift */; };
+		416D030125B18725000DE331 /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416D030025B18725000DE331 /* PopupVC.swift */; };
 		417E76FA1ECD5C7C00310B38 /* CellPersonaje.xib in Resources */ = {isa = PBXBuildFile; fileRef = 417E76F91ECD5C7C00310B38 /* CellPersonaje.xib */; };
 		417E76FC1ECD5CC200310B38 /* CellPersonaje.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417E76FB1ECD5CC200310B38 /* CellPersonaje.swift */; };
 		417E76FE1ECD81BB00310B38 /* ImagenHablar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 417E76FD1ECD81BB00310B38 /* ImagenHablar.xib */; };
@@ -97,6 +98,7 @@
 		416D02DD25B0DE8A000DE331 /* PersonajeArkitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonajeArkitVC.swift; sourceTree = "<group>"; };
 		416D02EC25B0E58A000DE331 /* HeroName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroName.swift; sourceTree = "<group>"; };
 		416D02ED25B0E58B000DE331 /* HeroNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroNode.swift; sourceTree = "<group>"; };
+		416D030025B18725000DE331 /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
 		417E76F91ECD5C7C00310B38 /* CellPersonaje.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellPersonaje.xib; sourceTree = "<group>"; };
 		417E76FB1ECD5CC200310B38 /* CellPersonaje.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPersonaje.swift; sourceTree = "<group>"; };
 		417E76FD1ECD81BB00310B38 /* ImagenHablar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagenHablar.xib; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				416D02EB25B0E55A000DE331 /* model */,
 				416D02DD25B0DE8A000DE331 /* PersonajeArkitVC.swift */,
+				416D030025B18725000DE331 /* PopupVC.swift */,
 			);
 			path = Arkit;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				416D02EF25B0E58B000DE331 /* HeroNode.swift in Sources */,
 				414009C81EB7227D00DDC720 /* ListadoTVC.swift in Sources */,
 				415C0F5125ADD4E900CB4D3D /* Validacion.swift in Sources */,
+				416D030125B18725000DE331 /* PopupVC.swift in Sources */,
 				414009A81EB7196500DDC720 /* ClassLIstadoModel.swift in Sources */,
 				4140098C1EB6636300DDC720 /* Coordinador.swift in Sources */,
 				417E76FC1ECD5CC200310B38 /* CellPersonaje.swift in Sources */,

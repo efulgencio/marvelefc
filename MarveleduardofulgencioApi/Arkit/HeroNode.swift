@@ -17,6 +17,27 @@ extension FloatingPoint {
 
 extension SCNNode {
     
+    func getTopMostParentNode() -> SCNNode {
+        
+        if let name = name,
+            name == HeroNode.shapeName || name == HeroNode.ringName {
+            return parent!
+        }
+        
+        if let topMostParentNode = parent {
+            
+            return topMostParentNode.getTopMostParentNode()
+        }
+        
+        return self
+    }
+    
+    
+    func rotateInPlace(duration: Double) {
+        let loop = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 5, z: 0, duration: 2.5))
+        runAction(loop)
+    }
+    
     func defaultPivotAndPosition() {
         
         pivot = SCNMatrix4MakeTranslation(0, 0, 0)

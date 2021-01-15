@@ -85,11 +85,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeN-cb-CCq">
-                                <rect key="frame" x="127.5" y="460" width="120" height="30"/>
+                                <rect key="frame" x="62.5" y="460" width="250" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="qT0-yd-ge9"/>
+                                    <constraint firstAttribute="width" constant="250" id="qT0-yd-ge9"/>
                                 </constraints>
-                                <state key="normal" title="ARKIT"/>
+                                <state key="normal" title="PULSA PARA ACCEDER A ARKIT"/>
                                 <connections>
                                     <segue destination="BeC-j1-QSc" kind="presentation" id="Cf3-JK-TRx"/>
                                 </connections>
@@ -140,16 +141,29 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyz-RV-N7e">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZB-kN-jEa">
+                                <rect key="frame" x="121" y="573" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="kCM-6R-EpX"/>
+                                </constraints>
+                                <state key="normal" title="SELECCIONA PERSONAJE"/>
+                                <connections>
+                                    <action selector="onPickAHeroBtnPressed:" destination="BeC-j1-QSc" eventType="touchUpInside" id="Tnk-3O-hiZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aZw-5n-k2j" firstAttribute="top" secondItem="eyz-RV-N7e" secondAttribute="bottom" id="KZ0-7r-i31"/>
+                            <constraint firstItem="aZw-5n-k2j" firstAttribute="top" secondItem="kZB-kN-jEa" secondAttribute="bottom" constant="44" id="Pzy-au-jfR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kZB-kN-jEa" secondAttribute="trailing" constant="38" id="WAV-Tt-y3z"/>
                             <constraint firstItem="eyz-RV-N7e" firstAttribute="top" secondItem="10j-fq-ePI" secondAttribute="bottom" id="Xad-nK-ZF4"/>
                             <constraint firstItem="eyz-RV-N7e" firstAttribute="leading" secondItem="osr-lT-icb" secondAttribute="leading" id="pKJ-vM-jzp"/>
                             <constraint firstAttribute="trailing" secondItem="eyz-RV-N7e" secondAttribute="trailing" id="sBp-wK-QzF"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pickerBtn" destination="kZB-kN-jEa" id="ozf-bY-i02"/>
                         <outlet property="sceneView" destination="eyz-RV-N7e" id="Btn-zg-Lgv"/>
                     </connections>
                 </viewController>
